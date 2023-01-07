@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<input type="hidden" id="cartas1" value="{{lista}}">
+<input type="hidden" id="cartas1" value="{{lista2}}">
+    <div class="container-fluid">
+        <div class="m-2 d-flex fs-1 rounded  bg-danger bg-gradiant justify-content-center align-items-center">
+            {% include 'modal.html' %}
+        </div>
+    </div>
+    <div class="container-fluid row mb-1">
+        <div class="col-5">
+            {% for key, value in lista|items %}
+                    <div class="d-flex d-flex justify-content-start align-items-center my-1 ms-1">
+                        <div class="d-flex justify-content-start">
+                            <p class="btn bg-dark m-0 mx-2 p-1 fs-5 fw-bold ajust-size " >{{key}}</p>
+                            {% for x in value %}
+                            <p class="btn bg-primary m-0 mx-1 p-1 fs-5 fw-bold ajust-size" id="key-{{x}}">
+                                {{x}}
+                            </p>
+                            {% endfor %}
+                        </div>
+                        <div class="d-flex justify-content-start align-items-center">
+                            <input type="text"  class="form-control" placeholder="Nombre de jugador" id="jugador{{ key }}">
+                            <b>
+                                <label class="fs-2" id="jugadorLabel{{key}}"></label>
+                            </b>
+                            <div class="d-flex ps-1 align-items-center">
+                                <input class="form-check-input " type="checkbox" value="" onclick="mostrarNombre(this)" id="jugadorPago{{ key }}">
+                                <label class="form-check-label ps-1" for="flexCheckDefault" id="labelPago{{key}}">
+                                    Pago!
+                                </label>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                {{ endfor }}
+            {% endfor %}
+        </div>
+        <div class="col-2 bg-dark rounded-4 d-flex ">
+
+            <div class="row">
+                <h2 class="display-1 text-success fw-bold text-center">BING4</h2>
+                
+                    <a href="#inicioSorteo" onclick="sorteo()" class="mb-2">
+                        <img src="{{ url_for('static', filename='img/boton.png') }}" class="d-block w-100 img-fluid img-inicio" >
+                        
+                    </a>
+                    
+                
+                <div href="#" class="d-flex justify-content-center align-items-center fw-bold display-2 text-image">
+                    <img src="{{ url_for('static', filename='img/boton2.png') }}" class="w-100 " alt="">
+                    <input type="hidden" id="sorteo" value="{{ funcion() }}">
+                    <p class="d-none d-md-block m-0 " id="num-sorteado"></p>
+                    
+                </div>
+            
+                <div class="row d-flex align-items-end">
+                    <div>
+                        <h2>Ganadores</h2>
+                        <table class="table fs-5 fw-bold">
+                            <thead>
+                                <th>Posicion</th>
+                                <th>Nombre</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+                
+            </div>
+           
+            
+        </div>
+        <div class="col-5">
+                {% for key, value in lista2|items %}
+                    
+                        <div class="d-flex justify-content-start align-items-center my-1 ms-1">
+                            <div class="d-flex justify-content-start">
+                                <p class="btn bg-dark m-0 mx-2 p-1 fs-5 fw-bold ajust-size " >{{key}}</p>
+                                {% for x in value %}
+                                <p class="btn bg-primary m-0 mx-1 p-1 fs-5 fw-bold ajust-size" id="key-{{x}}">
+                                    {{x}}
+                                </p>
+                                {% endfor %}
+                            </div>
+                            <div class="d-flex justify-content-start align-items-center">
+                                <input type="text"  class="form-control" placeholder="Nombre de jugador" id="jugador{{ key }}">
+                                <b>
+                                    <label class="fs-2" id="jugadorLabel{{key}}"></label>
+                                </b>
+                                <div class="d-flex ps-1 align-items-center">
+                                    <input class="form-check-input " type="checkbox" value="" onclick="mostrarNombre(this)" id="jugadorPago{{ key }}">
+                                    <label class="form-check-label ps-1" for="flexCheckDefault" id="labelPago{{key}}">
+                                        Pago!
+                                    </label>
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                    {{ endfor }}
+                {% endfor %}
+        </div>
+    </div>
+    
+
+{% endblock %}
