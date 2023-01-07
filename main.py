@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from sistema import system
 
-app = Flask("Bingo")
+app = Flask(__name__)
 
 def dividirLista(lista):
 
